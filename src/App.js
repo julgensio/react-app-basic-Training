@@ -1,25 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [name, setName] = useState('mario');
+	const [events, setEvents] = useState([
+		{ title: 'Mario bash boy', id: 1 },
+		{ title: 'Luigi Will be your best friend', id: 2 },
+		{ title: 'Peach is the princes of the game', id: 3 },
+	]);
+
+	const handleClick = () => {
+		setName('Luigi');
+		console.log(name);
+	};
+
+	return (
+		<div className='App'>
+			<h1>My name is {name}</h1>
+			<button onClick={handleClick}> Change name</button>
+
+			{events.map((event, i) => (
+				<div key={event.id} class>
+					<h2>
+						{i} - {event.title}
+					</h2>
+				</div>
+			))}
+		</div>
+	);
 }
 
 export default App;
