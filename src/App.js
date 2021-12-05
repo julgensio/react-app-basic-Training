@@ -38,7 +38,7 @@ function App() {
 				<button onClick={() => setShowModal(true)}>Show modal</button>
 			</div>
 			{showEvents && ( // * Show event if true
-				<div>
+				<div className='btn-event'>
 					<button onClick={() => setShowEvents(false)}> Hide Event</button>
 				</div>
 			)}
@@ -53,7 +53,7 @@ function App() {
 			)}
 
 			{showModal && (
-				<Modal handleClosed={handleClosed}>
+				<Modal handleClosed={handleClosed} isSalesModel={true}>
 					<h2>Terms of life</h2>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
