@@ -5,13 +5,27 @@ export default function NewEventForm() {
 	const [title, setTitle] = useState('');
 	const [date, setDate] = useState('');
 
+	// * Reset the form of the events
 	const resetForm = () => {
 		setTitle('');
 		setDate('');
 	};
+	// * Submitted event form the event form
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		const event = {
+			title: title,
+			date: date,
+			id: Math.floor(Math.random() * 100000000000000000000), // Temporary id number for events (that are submitted)
+		};
+
+		console.log(event);
+		resetForm();
+	};
 
 	return (
-		<form className='new-event-form'>
+		<form className='new-event-form' onSubmit={handleSubmit}>
 			<label>
 				<span>Event Title:</span>
 				<input
@@ -29,10 +43,6 @@ export default function NewEventForm() {
 				/>
 			</label>
 			<button>Submit</button>
-			<p>
-				Title - {title}, Date - {date}
-			</p>
-			<p onClick={resetForm}> reset form </p>
 		</form>
 	);
 }
