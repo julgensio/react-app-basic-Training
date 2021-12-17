@@ -6,14 +6,19 @@ import EventList from './components/EventList';
 import NewEventForm from './components/NewEventForm';
 
 function App() {
-	const [showModal, setShowModal] = useState(true);
+	const [showModal, setShowModal] = useState(false);
 	const [showEvents, setShowEvents] = useState(true);
 
-	const [events, setEvents] = useState([
-		{ title: 'Mario bash boy', id: 1 },
-		{ title: 'Luigi Will be your best friend', id: 2 },
-		{ title: 'Peach is the princes of the game', id: 3 },
-	]);
+	const [events, setEvents] = useState([]);
+
+	const addEvent = (event) => {
+		setEvents((prevEvents) => {
+			// * Add the previous events and at the new event into the object
+			return [...prevEvents, event];
+		});
+		// * Hide modal after submitted the new event
+		setShowModal(false);
+	};
 
 	const handleClick = (id) => {
 		// * Delete previous value of the updates state event (which will change in the future) from the State
@@ -55,7 +60,7 @@ function App() {
 
 			{showModal && (
 				<Modal handleClosed={handleClosed} isSalesModel={true}>
-					<NewEventForm />
+					<NewEventForm addEvent={addEvent} />
 				</Modal>
 			)}
 		</div>
