@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Title from './components/Title';
 import Modal from './components/Modal';
 import EventList from './components/EventList';
+import NewEventForm from './components/NewEventForm';
 
 function App() {
 	const [showModal, setShowModal] = useState(true);
@@ -35,7 +36,7 @@ function App() {
 		<div className='App'>
 			<Title title='This will be the title component' subtitle={subtitle} />
 			<div className='btn'>
-				<button onClick={() => setShowModal(true)}>Show modal</button>
+				<button onClick={() => setShowModal(true)}>Add New Event</button>
 			</div>
 			{showEvents && ( // * Show event if true
 				<div className='btn-event'>
@@ -54,13 +55,7 @@ function App() {
 
 			{showModal && (
 				<Modal handleClosed={handleClosed} isSalesModel={true}>
-					<h2>Terms of life</h2>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-						eiusmod tempor incididunt ut labore et dolore magna aliqua. Metus
-						aliquam eleifend mi in nulla posuere sollicitudin. Orci sagittis eu
-						volutpat odio facilisis mauris. Consequat mauris nunc congue nisi. .
-					</p>
+					<NewEventForm />
 				</Modal>
 			)}
 		</div>
